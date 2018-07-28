@@ -1,23 +1,23 @@
 # Vue Tags Input
 
-[![npm (scoped)](https://img.shields.io/npm/v/@voerro/vue-tagsinput.svg?style=flat-square)](https://www.npmjs.com/package/@voerro/vue-tagsinput)
-[![npm](https://img.shields.io/npm/dm/@voerro/vue-tagsinput.svg?style=flat-square)](https://www.npmjs.com/package/@voerro/vue-tagsinput)
-[![MIT](https://img.shields.io/github/license/AlexMordred/vue-tagsinput.svg?style=flat-square)](https://opensource.org/licenses/MIT)
-
 A simple tags input with typeahead built with Vue.js 2.
 
-![](demo.gif)
+Forked from @voerror/vue-tagsinput
 
-[Live Demo](https://voerro.github.io/vue-tagsinput/)
+I needed a tags input that would use data from an XHTTPRequest/Ajax as the tagged items would be in their thousands. So a lookup to and API was needed.
+
+I reworked the source and added in some code to allow the use of a custom fetch callback. This populates the parent's data source based on the typeahead.
+
+![](demo.gif)
 
 ## Installation via NPM
 
 ```
-npm i @voerro/vue-tagsinput --save-dev
+npm i git+https://git@github.com/:warlord0/vue-tagsinput --save-dev
 ```
 or
 ```
-npm i @voerro/vue-tagsinput --save
+npm i git+https://git@github.com/warlord0/vue-tagsinput --save
 ```
 
 Then register the component with Vue:
@@ -30,36 +30,14 @@ Vue.component('tags-input', VoerroTagsInput);
 
 Include the `dist/style.css` file on your page to apply the styling. You can use CDN, `require()` it inside your JS code, or `@include` it inside your (S)CSS assets. Read the `Styling` section to learn how to modify the appearance.
 
-## Installation via CDN
-
-If you're not using NPM, you can include the required files into your page manually from a CDN. Don't forget to include Vue as well. For example:
-
-```html
-<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.13/vue.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@voerro/vue-tagsinput@1.8.0/dist/voerro-vue-tagsinput.js"></script>
-
-<script>
-    new Vue({
-        el: '#app',
-        components: { VoerroTagsInput },
-    });
-</script>
-```
-
 Include the CSS file on your page to apply the styling. Read the `Styling` section to learn how to modify the appearance.
-
-```
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@voerro/vue-tagsinput@1.8.0/dist/style.css">
-```
-
-**IMPORTANT:** Always grab the latest versions of the package from [JSDELIVR](https://www.jsdelivr.com/package/npm/@voerro/vue-tagsinput?path=dist), the ones provided in the examples above might be outdated. Same goes for Vue.js.
 
 ## Usage
 
 ```html
 <tags-input element-id="tags"
     v-model="selectedTags"
-    :existing-tags="{ 
+    :existing-tags="{
         'web-development': 'Web Development',
         'php': 'PHP',
         'javascript': 'JavaScript',
@@ -70,12 +48,28 @@ Include the CSS file on your page to apply the styling. Read the `Styling` secti
 ```html
 <tags-input element-id="tags"
     v-model="selectedTags"
-    :existing-tags="{ 
+    :existing-tags="{
         1: 'Web Development',
         2: 'PHP',
         3: 'JavaScript',
     }"
     :typeahead="true"></tags-input>
+```
+
+with callback to API:
+
+```html
+<voerro-tags-input
+  :typeahead="true"
+  :typeahead-max-results="20"
+  :typeahead-activation-threshold="3"
+  :existing-tags="mytags"
+  v-model="model.field"
+  :only-existing-tags="true"
+  typeahead-fetch="fetch"
+  placeholder="Choose Tag"
+  element-id="mytag"
+/>
 ```
 
 `element-id` will be applied to `id` and `name` attributes of the hidden input that contains the list of the selected tags as its value. Optionally you can also use the `v-model` directive to bind a variable to the array of selected tags.
@@ -94,7 +88,7 @@ Acceptable values:
 
 For example, the variable name is `selectedTags`:
 ```html
-<tags-input element-id="tags" 
+<tags-input element-id="tags"
     v-model="selectedTags"></tags-input>
 ```
 
@@ -138,6 +132,23 @@ new Vue({
     }
 });
 ```
+### Example API data retrieval
+
+In the vue's `method: {}``
+
+```JavaScript    
+  fetch: function (search, callback) {
+    this.axios.get('/api/data', {
+      params: {
+        query: search.search,
+        limit: (search.limit > 10) ? search.limit : 10
+      }
+    }).then((response) => {
+      this.mytags = response
+      callback()
+    })
+  }
+```    
 
 #### All Available Props
 
@@ -155,6 +166,7 @@ input-class | String | 'tags-input-default-class' | no | Apply a class to make t
 delete-on-backspace | Boolean | true | no | Whether deleting tags by pressing Backspace is allowed.
 allow-duplicates | Boolean | false | no | Allow users to add the same tags multiple times.
 validate | Function | `text => true` | false | Callback to validate tags' text with
+typeahead-fetch | Function | {} | false | Callback to fetch data from API
 
 ## Data
 
