@@ -13,7 +13,7 @@ I reworked the source and added in some code to allow the use of a custom fetch 
 ## Installation via NPM
 
 ```
-npm i git+https://git@github.com/:warlord0/vue-tagsinput --save-dev
+npm i git+https://git@github.com/warlord0/vue-tagsinput --save-dev
 ```
 or
 ```
@@ -23,7 +23,7 @@ npm i git+https://git@github.com/warlord0/vue-tagsinput --save
 Then register the component with Vue:
 
 ```javascript
-import BTagsInput from 'warlord0/vue-tagsinput';
+import BTagsInput from 'vue-tagsinput';
 
 Vue.component('tags-input', BTagsInput);
 ```
