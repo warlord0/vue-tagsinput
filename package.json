@@ -1,7 +1,7 @@
 {
-    "name": "@voerro/vue-tagsinput",
-    "version": "1.8.0",
-    "description": "A simple tags input with typeahead made with Vue.js 2",
+    "name": "vue-tagsinput",
+    "version": "1.8.1",
+    "description": "A simple tags input with typeahead and API callback made with Vue.js 2",
     "main": "src/main.js",
     "keywords": [
         "vue",
@@ -11,13 +11,15 @@
         "tags",
         "typeahead"
     ],
-    "author": "Alexander Zavyalov <alex@voerro.com> (http://voerro.com)",
+    "author": "Warlord0 <bill_bixby@mail.com> (http://warlord0blog.wordpress.com)",
     "license": "MIT",
     "scripts": {
         "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
         "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
     },
     "dependencies": {
+        "eslint-plugin-vue": "^4.7.1",
+        "lodash": "^4.17.10",
         "vue": "^2.5.0"
     },
     "browserslist": [
@@ -38,5 +40,5 @@
         "webpack": "^3.6.0",
         "webpack-dev-server": "^2.9.1"
     },
-    "repository": "https://github.com/voerro/vue-tagsinput"
+    "repository": "https://github.com/warlord0/vue-tagsinput"
 }

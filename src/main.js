@@ -1,5 +1,5 @@
-import VoerroTagsInput from './VoerroTagsInput.vue'
+import BTagsInput from './BTagsInput.vue'
 
-window.VoerroTagsInput = VoerroTagsInput;
+window.BTagsInput = BTagsInput;
 
-export default VoerroTagsInput;
+export default BTagsInput;

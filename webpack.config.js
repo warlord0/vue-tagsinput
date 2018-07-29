@@ -6,7 +6,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, './dist'),
     publicPath: '/dist/',
-    filename: 'voerro-vue-tagsinput.js'
+    filename: 'b-vue-tagsinput.js'
   },
   module: {
     rules: [
