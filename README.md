@@ -23,7 +23,7 @@ npm i git+https://git@github.com/warlord0/vue-tagsinput --save
 Then register the component with Vue:
 
 ```javascript
-import BTagsInput from 'vue-tagsinput';
+import BTagsInput from '@warlord0/vue-tagsinput';
 
 Vue.component('tags-input', BTagsInput);
 ```

@@ -1,5 +1,5 @@
 {
-    "name": "vue-tagsinput",
+    "name": "@warlord0/vue-tagsinput",
     "version": "1.8.1",
     "description": "A simple tags input with typeahead and API callback made with Vue.js 2",
     "main": "src/main.js",
