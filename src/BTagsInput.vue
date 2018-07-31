@@ -242,7 +242,14 @@ export default {
           if (this.typeaheadFetch) {
             this.typeaheadFetch({ search: input, limit: this.typeaheadMaxResults }, () => {
               process.nextTick(() => { // We need to process the props update from the parent
-                this.searchLoadedTag(input)
+                // No need to call searchLoadedTag as we already have a filtered and sorted list
+                for (let slug in this.existingTags) {
+                  let text = this.existingTags[slug].toLowerCase()
+                  this.searchResults.push({
+                    slug,
+                    text: this.existingTags[slug]
+                  })
+                }
               })
             })
           } else {

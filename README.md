@@ -13,10 +13,16 @@ I reworked the source and added in some code to allow the use of a custom fetch 
 ## Installation via NPM
 
 ```
+npm i @warlord/vue-tagsinput --save-dev
+npm i @warlord/vue-tagsinput --save
+```
+### or Yarn
+```
+yarn add @warlord/vue-tagsinput
+```
+### or using github
+```
 npm i git+https://git@github.com/warlord0/vue-tagsinput --save-dev
-```
-or
-```
 npm i git+https://git@github.com/warlord0/vue-tagsinput --save
 ```
 
@@ -28,7 +34,7 @@ import BTagsInput from '@warlord0/vue-tagsinput';
 Vue.component('tags-input', BTagsInput);
 ```
 
-Include the `dist/style.css` file on your page to apply the styling. You can use CDN, `require()` it inside your JS code, or `@include` it inside your (S)CSS assets. Read the `Styling` section to learn how to modify the appearance.
+Include the `dist/style.css` file on your page to apply the styling. You can `require()` it inside your JS code, or `@include` it inside your (S)CSS assets. Read the `Styling` section to learn how to modify the appearance.
 
 Include the CSS file on your page to apply the styling. Read the `Styling` section to learn how to modify the appearance.
 
@@ -42,7 +48,7 @@ Include the CSS file on your page to apply the styling. Read the `Styling` secti
         'php': 'PHP',
         'javascript': 'JavaScript',
     }"
-    :typeahead="true"></tags-input>
+    :typeahead="true"></b-tags-input>
 ```
 
 ```html
@@ -53,7 +59,7 @@ Include the CSS file on your page to apply the styling. Read the `Styling` secti
         2: 'PHP',
         3: 'JavaScript',
     }"
-    :typeahead="true"></tags-input>
+    :typeahead="true"></b-tags-input>
 ```
 
 with callback to API:
@@ -134,7 +140,7 @@ new Vue({
 ```
 ### Example API data retrieval
 
-In the vue's `method: {}``
+In the vue's `method: {}`
 
 ```JavaScript    
   fetch: function (search, callback) {
